@@ -1,0 +1,18 @@
+E:\repos\RBFNetwork\RBFNetwork\bin\Debug\RBFNetwork.exe.config
+E:\repos\RBFNetwork\RBFNetwork\bin\Debug\RBFNetwork.exe
+E:\repos\RBFNetwork\RBFNetwork\bin\Debug\RBFNetwork.pdb
+E:\repos\RBFNetwork\RBFNetwork\obj\Debug\RBFNetwork.csproj.CoreCompileInputs.cache
+E:\repos\RBFNetwork\RBFNetwork\obj\Debug\RBFNetwork.exe
+E:\repos\RBFNetwork\RBFNetwork\obj\Debug\RBFNetwork.pdb
+E:\repos\RBFNetwork\RBFNetwork\bin\Debug\CsvHelper.dll
+E:\repos\RBFNetwork\RBFNetwork\obj\Debug\RBFNetwork.csproj.CopyComplete
+E:\repos\RBFNetwork\RBFNetwork\obj\Debug\RBFNetwork.csprojAssemblyReference.cache
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\bin\Debug\RBFNetwork.exe.config
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\bin\Debug\RBFNetwork.exe
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\bin\Debug\RBFNetwork.pdb
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\bin\Debug\CsvHelper.dll
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\obj\Debug\RBFNetwork.csprojAssemblyReference.cache
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\obj\Debug\RBFNetwork.csproj.CoreCompileInputs.cache
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\obj\Debug\RBFNetwork.csproj.CopyComplete
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\obj\Debug\RBFNetwork.exe
+C:\Users\vskuz\OneDrive\Рабочий стол\RBF\RBFNetwork\obj\Debug\RBFNetwork.pdb

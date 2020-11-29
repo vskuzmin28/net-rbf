@@ -1,0 +1,55 @@
+ //var derivativeCentroid = new double[RadialNeurons.Count][];
+                    //var derivativeWeight = new double[RadialNeurons.Count][];
+                    //var derivativeWidth = new double[RadialNeurons.Count][];
+                    //var derivativeBias = new double[OutputNeurons.Count];
+
+                    //for (int i = 0; i < OutputNeurons.Count; i++)
+                    //{
+                    //    derivativeBias[i] = OutputNeurons[i].Delta;
+                    //}
+
+                    ///* DERIVATIVE WEIGHT */
+                    //for (int i = 0; i < RadialNeurons.Count; i++)
+                    //{
+                    //    var radialNeuron = RadialNeurons[i];
+                    //    derivativeWeight[i] = new double[OutputNeurons.Count];
+
+                    //    for (int s = 0; s < OutputNeurons.Count; s++)
+                    //        derivativeWeight[i][s] = radialNeuron.Output * OutputNeurons[s].Delta;
+                    //}
+
+                    /////* DERIVATIVE CENTROID AND WIDTH*/
+                    //for (int i = 0; i < RadialNeurons.Count; i++)
+                    //{
+                    //    var radialNeuron = RadialNeurons[i];
+                    //    derivativeCentroid[i] = new double[radialNeuron.Centroids.Count];
+                    //    derivativeWidth[i] = new double[radialNeuron.Widths.Count];
+
+                    //    var derCentroidSum = OutputNeurons.Sum(n => n.Delta * n.Weights[i]);
+
+                    //    for (int j = 0; j < radialNeuron.Centroids.Count; j++)
+                    //    {
+                    //        var numerator = input[j] - radialNeuron.Centroids[j];
+                    //        var centroidExpression = numerator / Math.Pow(radialNeuron.Widths[j], 2);
+                    //        var widthExpression = numerator / Math.Pow(radialNeuron.Widths[j], 3);
+                    //        var prod = derCentroidSum * radialNeuron.Output;
+                    //        derivativeCentroid[i][j] = prod * centroidExpression;
+                    //        derivativeWidth[i][j] = prod * widthExpression;
+                    //    }
+                    //}
+
+                    //for (int i = 0; i < OutputNeurons.Count; i++)
+                    //    OutputNeurons[i].Bias -= Topology.LearningRate * derivativeBias[i];
+
+                    //for (int i = 0; i < RadialNeurons.Count; i++)
+                    //{
+                    //    var radialNeuron = RadialNeurons[i];
+                    //    for (int s = 0; s < OutputNeurons.Count; s++)
+                    //        OutputNeurons[s].Weights[i] -= Topology.LearningRate * derivativeWeight[i][s];
+
+                    //    for (int j = 0; j < radialNeuron.Centroids.Count; j++)
+                    //    {
+                    //        radialNeuron.Centroids[j] -= Topology.LearningRate * derivativeCentroid[i][j];
+                    //        radialNeuron.Widths[j] -= Topology.LearningRate * derivativeWidth[i][j];
+                    //    }
+                    //}
