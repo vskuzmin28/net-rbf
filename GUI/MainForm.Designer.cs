@@ -67,7 +67,7 @@
             // 
             // tbTrainError
             // 
-            this.tbTrainError.Location = new System.Drawing.Point(56, 50);
+            this.tbTrainError.Location = new System.Drawing.Point(56, 71);
             this.tbTrainError.MaxLength = 4;
             this.tbTrainError.Name = "tbTrainError";
             this.tbTrainError.ReadOnly = true;
@@ -76,7 +76,7 @@
             // 
             // tbPredictError
             // 
-            this.tbPredictError.Location = new System.Drawing.Point(277, 50);
+            this.tbPredictError.Location = new System.Drawing.Point(277, 71);
             this.tbPredictError.Name = "tbPredictError";
             this.tbPredictError.ReadOnly = true;
             this.tbPredictError.Size = new System.Drawing.Size(203, 20);
@@ -84,27 +84,33 @@
             // 
             // btnPredict
             // 
+            this.btnPredict.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnPredict.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnPredict.ForeColor = System.Drawing.SystemColors.Control;
             this.btnPredict.Location = new System.Drawing.Point(277, 21);
             this.btnPredict.Name = "btnPredict";
-            this.btnPredict.Size = new System.Drawing.Size(203, 23);
+            this.btnPredict.Size = new System.Drawing.Size(203, 40);
             this.btnPredict.TabIndex = 0;
             this.btnPredict.Text = "Прогнозирование (1 прогон)";
-            this.btnPredict.UseVisualStyleBackColor = true;
+            this.btnPredict.UseVisualStyleBackColor = false;
             this.btnPredict.Click += new System.EventHandler(this.BtnPredict_Click);
             // 
             // btnTrain
             // 
+            this.btnTrain.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnTrain.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnTrain.ForeColor = System.Drawing.SystemColors.Control;
             this.btnTrain.Location = new System.Drawing.Point(24, 21);
             this.btnTrain.Name = "btnTrain";
-            this.btnTrain.Size = new System.Drawing.Size(203, 23);
+            this.btnTrain.Size = new System.Drawing.Size(203, 40);
             this.btnTrain.TabIndex = 0;
             this.btnTrain.Text = "Обучение";
-            this.btnTrain.UseVisualStyleBackColor = true;
+            this.btnTrain.UseVisualStyleBackColor = false;
             this.btnTrain.Click += new System.EventHandler(this.BtnTrain_Click);
             // 
             // tbRightPredictions
             // 
-            this.tbRightPredictions.Location = new System.Drawing.Point(277, 76);
+            this.tbRightPredictions.Location = new System.Drawing.Point(277, 97);
             this.tbRightPredictions.Name = "tbRightPredictions";
             this.tbRightPredictions.ReadOnly = true;
             this.tbRightPredictions.Size = new System.Drawing.Size(203, 20);
@@ -114,9 +120,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 53);
+            this.label1.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(21, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(29, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "СКО";
             // 
