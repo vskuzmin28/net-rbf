@@ -25,7 +25,9 @@ namespace GUI
 
         public double Train()
         {
+            // Нормализация данных для обучающей выборки
             trainDataset.Normalize();
+            // Считаем ошибку
             double error = neuralNetwork.Train(trainDataset, 30);
             return error;
         }
@@ -49,9 +51,6 @@ namespace GUI
                 var dp = new DataPoint(expected * inputsSum, output * inputsSum, diff * diff, k);
                 result.Add(dp);
                 k++;
-                //k += 7;
-                //if (k > 30)
-                //    k = 0;
             }
             return result;
         }

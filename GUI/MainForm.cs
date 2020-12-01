@@ -16,9 +16,9 @@ namespace GUI
 {
     public partial class MainForm : Form, IView
     {
-        private const string STR_Expected = "Expected";
-        private const string STR_Output = "Output";
-        private const string STR_Error = "Error";
+        private const string STR_Expected = "Ожидается";
+        private const string STR_Output = "Посчитала НС";
+        private const string STR_Error = "Ошибка";
 
         public List<DataPoint> DataPoints { get; set; }
         private NeuralNetworkModel model;
@@ -43,22 +43,14 @@ namespace GUI
         private async void MainForm_Load(object sender, EventArgs e)
         {
             chart.Series.Clear();
+
+            // Входные данные
             Series expectedSeries = CreateSeries(STR_Expected);
             Series outputSeries = CreateSeries(STR_Output);
-            //Series errorSeries = new Series(STR_Error);
-            //errorSeries.ChartType = SeriesChartType.Line;
-            //errorSeries.BorderWidth = 5;
-
-            //Axis XA = chart.ChartAreas[0].AxisX;
-            //XA.MajorGrid.Enabled = false;
-            //XA.LabelStyle.Format = "MMM";
-            //XA.IntervalType = DateTimeIntervalType.Months;
-            //XA.Interval = 1;
-            //chart.ChartAreas[0].AxisY.Interval = 1;
 
             chart.Series.Add(expectedSeries);
             chart.Series.Add(outputSeries);
-            //chart.Series.Add(errorSeries);
+
             await LoadData();
         }
 
@@ -116,6 +108,7 @@ namespace GUI
                     chart.Series[STR_Output].Points.AddXY(dp.X, dp.Output);
 
                     error += dp.Error;
+                    // Если условие не поставить, то ответов не будет, т.к. это прогноз.
                     if (dp.Expected - dp.Output <= 2)
                         rightAnswers++;
                     }

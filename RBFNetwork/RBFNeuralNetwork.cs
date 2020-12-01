@@ -14,7 +14,10 @@ namespace RBFNetwork
         {
             Topology = topology;
 
+            // В скрытом слое создал список скрытых нейронов
             RadialNeurons = CreateHiddenLayer();
+
+            // Список нейронов в выходном слое
             OutputNeurons = CreateOutputLayer();
         }
 
@@ -88,22 +91,16 @@ namespace RBFNetwork
                         RadialNeurons[i].UpdateCentroidsAndWidths(outputNeuronsSumExpression, input);
                     }
 
-                    //var orderedNeurons = RadialNeurons.OrderBy(n => input.GetEuclideanDistance(n.Centroids));
-                    //var winner = orderedNeurons.First();
-                    //for (int j = 0; j < input.Length; j++)
-                    //    winner.Centroids[j] += Topology.LearningRate * (input[j] - winner.Centroids[j]);
-
-                    //CalculateWidths();
-
                     OutputNeurons.ForEach(n =>
                     {
                         n.UpdateBias();
                         n.UpdateWeights(RadialNeurons);
                     });
                     
-                    //MSE
+                    // СКО (ожидаемое - практическое ^2) / кол-во нейронов
                     error += OutputNeurons.Select(n => Math.Pow(n.Delta, 2)).Sum() / OutputNeurons.Count;
-                }                
+                }
+                // Считаем ошибку как СКО
                 error = Math.Sqrt(error / (dataset.RowCount - 1));
 
                 if (error < minError)
@@ -113,7 +110,6 @@ namespace RBFNetwork
                 }
 
                 totalError += error;
-               // Console.WriteLine($"Iteration #{e}, Error: {error}");
             }
             return totalError / epoch;
         }
@@ -146,18 +142,6 @@ namespace RBFNetwork
                 RadialNeurons[i].Widths = new List<double>(Enumerable.Repeat(widthI, RadialNeurons[i].Centroids.Count));
             }
         }
-
-        //for (int i = 0; i < RadialNeurons.Count - 1; i++)
-        //{
-        //    var neuronI = RadialNeurons[i];
-        //    for (int j = i + 1; j < RadialNeurons.Count; j++)
-        //    {
-        //        var neuronJ = RadialNeurons[j];
-        //        var dist = Shared.GetEuclideanDistance(neuronI.Centroids, neuronJ.Centroids);
-        //        sumOfDists += dist * dist;
-        //        pairsCount++;
-        //    }                
-        //}
 
         private void CalculateCentroids(List<double[]> signals, double othersLearningRate)
         {
@@ -210,6 +194,8 @@ namespace RBFNetwork
             return hiddenNeurons;
         }
 
+
+        // Создается список которые содержит нейроны выходного слоя. Для нашей сети 1 нейрон
         private List<Neuron> CreateOutputLayer()
         {
             List<Neuron> neurons = new List<Neuron>(Topology.OutputCount);
