@@ -25,6 +25,7 @@ namespace RBFNetwork
             Output = Gaussian(input);
         }
 
+        // В качестве радиальной функции чаще всего применяется функция Гаусса. При размещении ее центра в точке  она может быть определена в сокращенной форме как:
         public double Gaussian(double[] input)
         {
             Func<int, double> func = j =>

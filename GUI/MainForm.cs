@@ -36,7 +36,7 @@ namespace GUI
             expectedSeries.ChartType = SeriesChartType.Line;
             expectedSeries.XValueType = ChartValueType.Double;
             expectedSeries.BorderWidth = 5;
-            expectedSeries.ToolTip = "Курс. 1: #VALY \nDate: #VALX";
+            expectedSeries.ToolTip = "Курс. 1: #VALY \nДата: 19#VALX";
             return expectedSeries;
         }
 

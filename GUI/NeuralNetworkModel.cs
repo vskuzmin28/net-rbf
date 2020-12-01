@@ -13,12 +13,6 @@ namespace GUI
 
         public NeuralNetworkModel(Dataset dataset, Dataset testSet)
         {
-            //for (int i = 0; i < dataset.RowCount; i++)
-            //    if (i < (dataset.RowCount*0.95))
-            //    trainDataset.Records.Add(dataset.Records[i]);
-            //else
-            //        testDataset.Records.Add(dataset.Records[i]);
-
             for (int i = 0; i < dataset.RowCount; i++)
                 trainDataset.Records.Add(dataset.Records[i]);
 
