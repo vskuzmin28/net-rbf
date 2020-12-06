@@ -38,9 +38,15 @@ namespace RBFNetwork
             var totalError = 0.0;
             if (!useCalculatedValues)
             {
+                // Инициализируются центроиды
                 InitCentroids(signals);
+
+                // Считаются центроиды
                 CalculateCentroids(signals, othersLearningRate);
+
+                // Параметр который отвечает за ширину полосы в функции Гаусса
                 CalculateWidths();
+
 
                 for (int i = 0; i < RadialNeurons.Count; i++)
                 {

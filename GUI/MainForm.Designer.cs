@@ -148,7 +148,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chart);
             this.Name = "MainForm";
-            this.Text = "Прогнозирование курса валют";
+            this.Text = "Прогнозирование курса валют / Криптовалюта Эфир";
             this.Load += new System.EventHandler(this.MainForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.panel1.ResumeLayout(false);

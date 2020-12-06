@@ -36,7 +36,7 @@ namespace GUI
             expectedSeries.ChartType = SeriesChartType.Line;
             expectedSeries.XValueType = ChartValueType.Double;
             expectedSeries.BorderWidth = 5;
-            expectedSeries.ToolTip = "Курс. 1: #VALY \nДата: 19#VALX";
+            expectedSeries.ToolTip = "Курс. 1: #VALY";
             return expectedSeries;
         }
 
@@ -58,15 +58,13 @@ namespace GUI
         {
             var dataset = new Dataset();
             Assembly assembly = Assembly.GetExecutingAssembly();
-
-            //var datasetStream = assembly.GetManifestResourceStream("GUI.Resources.trainTemp.csv");
-
-
             var datasetStream = assembly.GetManifestResourceStream("GUI.Resources.ALL.csv");
             await dataset.LoadTemperature(new StreamReader(datasetStream));
             var ds = new Dataset();
             var dsStream = assembly.GetManifestResourceStream("GUI.Resources.RSMOSCOW-test.csv");
             await ds.LoadTemperature(new StreamReader(dsStream));
+
+            // Модель
             model = new NeuralNetworkModel(dataset, ds);
 
         }
@@ -96,6 +94,17 @@ namespace GUI
                 "Oct",
                 "Nov",
                 "Dec" };
+
+            int startOffset = -2;
+            int endOffset = 2;
+            foreach (string month in months)
+            {
+                CustomLabel monthLabel = new CustomLabel(startOffset, endOffset, month, 0, LabelMarkStyle.None);
+                chart.ChartAreas[0].AxisX.CustomLabels.Add(monthLabel);
+                startOffset = startOffset + 5;
+                endOffset = endOffset + 5;
+            }
+
             int m = -1;
             int k = 0;
             double error = 0;
@@ -104,8 +113,8 @@ namespace GUI
             {
                 if (dp.Expected > 0 && dp.Output > 0)
                 {
-                    chart.Series[STR_Expected].Points.AddXY(dp.X, dp.Expected);
-                    chart.Series[STR_Output].Points.AddXY(dp.X, dp.Output);
+                    chart.Series[STR_Expected].Points.AddXY(dp.X, dp.Expected * 1000);
+                    chart.Series[STR_Output].Points.AddXY(dp.X, dp.Output * 1000);
 
                     error += dp.Error;
                     // Если условие не поставить, то ответов не будет, т.к. это прогноз.

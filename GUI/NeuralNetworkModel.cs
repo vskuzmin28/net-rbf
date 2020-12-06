@@ -27,19 +27,23 @@ namespace GUI
         {
             // Нормализация данных для обучающей выборки
             trainDataset.Normalize();
-            // Считаем ошибку
+
+            // Считаем ошибку кол-во эпох 30
             double error = neuralNetwork.Train(trainDataset, 30);
             return error;
         }
 
+        // Прогнозирование
         public List<DataPoint> Predict()
         {
             List<DataPoint> result = new List<DataPoint>();
             int k = 1;
 
+            // Для нормализации
             double inputsSum = testDataset.Records.Sum(r => r.InputData.Sum(x => x * x) + r.Expected.Sum(x => x * x));
             inputsSum = Math.Sqrt(inputsSum);
 
+            // Нормализация
             testDataset.Normalize();
 
             foreach (Record record in testDataset.Records)
@@ -47,7 +51,11 @@ namespace GUI
                 var expected = record.Expected[0];
                 var output = neuralNetwork.Predict(record.InputData)[0];
 
+                // Разница между ожидаемым и выходным
                 var diff = expected - output;
+
+                // Набор точек на графике
+                // к - точка на графике
                 var dp = new DataPoint(expected * inputsSum, output * inputsSum, diff * diff, k);
                 result.Add(dp);
                 k++;
