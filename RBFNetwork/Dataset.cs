@@ -171,13 +171,11 @@ namespace RBFNetwork
 
         public void Load(StreamReader sr)
         {
-            //List<DataStructure> records = null;
             using (CsvReader reader = new CsvReader(sr))
             {
                 reader.Configuration.HasHeaderRecord = false;
                 reader.Configuration.Delimiter = ",";
                 reader.Configuration.CultureInfo = CultureInfo.InvariantCulture;
-                //records = reader.GetRecords<DataStructure>().ToList();
                 double value;
                 while (reader.Read())
                 {
@@ -208,49 +206,10 @@ namespace RBFNetwork
                 rec.Expected = expected;
             }
 
-            
-            //if (records != null && records.Count != 0)
-            //{                
-            //    this.ClassesNames = records.Select(rec => rec.Class)
-            //    .Distinct()
-            //    .Select((l, i) => new { Name = l, Index = i })
-            //    .ToDictionary(k => k.Name, v => v.Index);
-            //    this.FillData(numberOfDataColumns, records);
-            //}
         }
 
         private static Random random = new Random();
 
-        //private void FillData(int numberOfDataColumns, List<DataStructure> dataRecords)
-        //{
-        //    int classesCount = ClassesNames.Count;
-        //    int rowsCount = dataRecords.Count;
-
-        //    var extractedInputData = dataRecords.Select(rec => new double[] { rec.SepalLength, rec.SepalWidth, rec.PetalLength, rec.PetalWidth }).ToList();
-
-        //    for (int i = 0; i < rowsCount; i++)
-        //    {
-        //        var dataRecord = dataRecords[i];
-
-        //        var inputData = new double[numberOfDataColumns];
-        //        var expectedData = new double[classesCount];
-
-        //        for (int j = 0; j < numberOfDataColumns; j++)
-        //        {
-        //            inputData[j] = extractedInputData[i][j];
-        //        }
-
-        //        for (int j = 0; j < classesCount; j++)
-        //        {
-        //            if (j == ClassesNames[dataRecord.Class])
-        //                expectedData[j] = 1.0;
-        //            else
-        //                expectedData[j] = 0.0;
-        //        }
-
-        //        Records.Add(new Record(inputData, expectedData, dataRecord.Class));
-        //    }
-        //}
 
         public void NormalizeInputs()
         {
@@ -258,6 +217,7 @@ namespace RBFNetwork
             SetExpectedFromList(GetNormalizedData(Records.ToListOfArrays(r => r.Expected)));
         }
 
+        // Нормализация
         public void Normalize()
         {
             double inputsSum = Records.Sum(r => r.InputData.Sum(x => x * x) + r.Expected.Sum(x => x * x));
@@ -303,7 +263,7 @@ namespace RBFNetwork
 
                 var average = sum / Data.Count;
 
-                //ско нейрона
+                // СКО нейрона
                 var error = 0.0;
                 for (int row = 0; row < Data.Count; row++)
                     error += Math.Pow(Data[row][column] - average, 2);

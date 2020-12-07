@@ -18,7 +18,8 @@ namespace GUI
 
             for (int i = 0; i < testSet.RowCount; i++)
                 testDataset.Records.Add(testSet.Records[i]);
-
+            
+            // Топология
             var topology = new Topology(trainDataset.ClassesNames?.Count ?? 1, 0.01, trainDataset.ColumnCount);
             neuralNetwork = new RBFNeuralNetwork(topology);
         }

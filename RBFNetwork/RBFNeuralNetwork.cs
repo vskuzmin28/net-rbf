@@ -28,6 +28,7 @@ namespace RBFNetwork
 
         public double Train(Dataset dataset, int epoch, bool useCalculatedValues = false)
         {
+            // Количество на обучение
             var signals = dataset.Records.ToListOfArrays(r => r.InputData);
             var expected = dataset.Records.ToListOfArrays(r => r.Expected);
 
@@ -82,11 +83,10 @@ namespace RBFNetwork
                 foreach (Record record in dataset)
                 {
                     var input = record.InputData;
-                    /* FORWARD PROPAGATION - RADIAL NEURONS */
+                    // Распространение
                     RadialNeurons.ForEach(n => n.CalculateOutput(input));
-                    /* FORWARD PROPAGATION - NEURONS */
+                    // Передовое распространение
                     OutputNeurons.ForEach(n => n.CalculateOutput(RadialNeurons));
-                    /* BACKPROPAGATION - NEURONS */
 
                     for (int i = 0; i < OutputNeurons.Count; i++)
                         OutputNeurons[i].SetExpectedValue(record.Expected[i]);
@@ -165,8 +165,6 @@ namespace RBFNetwork
                 {
                     var ct = winner.Centroids[j];
                     winner.Centroids[j] += Topology.LearningRate * (signal[j] - ct);
-                    //losers.ForEach(l =>
-                      //             l.Centroids[j] -= othersLearningRate * (signal[j] - l.Centroids[j]));
                 }
             }
         }
@@ -175,12 +173,6 @@ namespace RBFNetwork
 
         private void InitCentroids(List<double[]> data)
         {
-            //for (int column = 0; column < data[0].Length; column++)
-            //{
-            //    var average = data.Select((d, row) => d[column]).Average();
-            //    for (int i = 0; i < Topology.HiddenNeuronsCount; i++)
-            //        RadialNeurons[column].Centroids.Add(average);
-            //}
             RadialNeurons.ForEach(rn =>
             {
                 for (int i = 0; i < data[0].Length; i++)
@@ -192,6 +184,7 @@ namespace RBFNetwork
             );
         }
 
+        // Создается список скрытых нейронов в слое
         private List<RadialNeuron> CreateHiddenLayer()
         {
             List<RadialNeuron> hiddenNeurons = new List<RadialNeuron>(Topology.HiddenNeuronsCount);

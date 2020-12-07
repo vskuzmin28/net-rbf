@@ -15,6 +15,7 @@ namespace RBFNetwork
 
         private static Random rnd = new Random();
 
+        // Памераметры нейрона
         public Neuron(int hiddenCount, double learningRate)
         {
             Weights = new List<double>(hiddenCount);
@@ -43,6 +44,7 @@ namespace RBFNetwork
             Bias -= LearningRate * Delta;
         }
 
+        // Обновляем веса
         public void UpdateWeights(List<RadialNeuron> radialNeurons)
         {
             for (int i = 0; i < Weights.Count; i++)
