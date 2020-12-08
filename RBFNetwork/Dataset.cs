@@ -50,8 +50,6 @@ namespace RBFNetwork
         }
     }
 
-   
-
     public class Dataset : IEnumerable
     {
         public List<Record> Records { get; set; }
@@ -220,6 +218,7 @@ namespace RBFNetwork
         // Нормализация
         public void Normalize()
         {
+
             double inputsSum = Records.Sum(r => r.InputData.Sum(x => x * x) + r.Expected.Sum(x => x * x));
             inputsSum = Math.Sqrt(inputsSum);
             foreach (var record in Records)
@@ -228,6 +227,7 @@ namespace RBFNetwork
                     record.InputData[i] /= inputsSum;
                 for (int i = 0; i < record.Expected.Length; i++)
                     record.Expected[i] /= inputsSum;
+                // inputsSum преобразовать
             }
         }
 

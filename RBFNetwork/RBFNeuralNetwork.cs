@@ -30,6 +30,7 @@ namespace RBFNetwork
         {
             // Количество на обучение
             var signals = dataset.Records.ToListOfArrays(r => r.InputData);
+            // Ожидаемые значения
             var expected = dataset.Records.ToListOfArrays(r => r.Expected);
 
             var error = 0.0;
@@ -48,7 +49,10 @@ namespace RBFNetwork
                 // Параметр который отвечает за ширину полосы в функции Гаусса
                 CalculateWidths();
 
-
+                // В скрытом слое у нейронов функция активации Гаусов
+                // У радиальных нейронов функция активации Гауса
+                // У выходного, у нас один нейнрон - линейная
+                // У Гауса два параметра - центроиды и ню
                 for (int i = 0; i < RadialNeurons.Count; i++)
                 {
                     calculatedCentroids.Add(RadialNeurons[i].Centroids);
@@ -57,6 +61,7 @@ namespace RBFNetwork
 
                 for (int i = 0; i < OutputNeurons.Count; i++)
                 {
+                    // Линейные функции
                     calculatedWeights.Add(OutputNeurons[i].Weights);
                     calculatedBiases.Add(OutputNeurons[i].Bias);
                 }
@@ -171,12 +176,15 @@ namespace RBFNetwork
 
         static Random rnd = new Random();
 
+        // У каждого нейрона есть массив центроидов, каждый из элементов это расстояние до другого нейрона
+        // Получаем значение для инициализации
         private void InitCentroids(List<double[]> data)
         {
             RadialNeurons.ForEach(rn =>
             {
                 for (int i = 0; i < data[0].Length; i++)
                 {
+                    // Считаем число и ширину
                     rn.Centroids.Add(rnd.NextDouble());
                     rn.Widths.Add(rnd.NextDouble());
                 }
